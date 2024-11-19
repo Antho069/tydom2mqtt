@@ -193,7 +193,7 @@ class TydomClient:
         try:
             self.connection = await websockets.connect(
                 f"wss://{self.host}:443/mediation/client?mac={self.mac}&appli=1",
-                extra_headers=websocket_headers,
+                additional_headers=websocket_headers,
                 ssl=websocket_ssl_context,
                 ping_timeout=None,
             )
