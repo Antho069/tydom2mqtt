@@ -734,8 +734,7 @@ class MessageHandler:
                 sos_state = False
                 try:
 
-                    if ('alarmState' in attr_alarm and attr_alarm['alarmState'] == "ON") or (
-                            'alarmState' in attr_alarm and attr_alarm['alarmState']) == "QUIET":
+                    if "alarmState" in attr_alarm and attr_alarm["alarmState"] in ("ON", "QUIET"):
                         state = "triggered"
 
                     elif 'alarmState' in attr_alarm and attr_alarm['alarmState'] == "DELAYED":
