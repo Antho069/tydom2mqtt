@@ -40,11 +40,12 @@ class Alarm:
             'device': self.device,
             'command_topic': alarm_command_topic.format(id=self.id),
             'state_topic': alarm_state_topic.format(id=self.id),
-            'code_arm_required': 'false',
+            'code_arm_required': false,
+            'supported_features': ["arm_home", "arm_away", "arm_night"],
         }
         self.config_alarm_topic = alarm_config_topic.format(id=self.id)
 
-        if self.alarm_pin is None:
+        if self.alarm_pin is not None:
             self.config['code'] = self.alarm_pin
             self.config['code_arm_required'] = 'true'
 
