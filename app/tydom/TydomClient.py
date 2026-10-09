@@ -334,9 +334,9 @@ class TydomClient:
                     + str(value)
                     + '","pwd":"'
                     + str(self.alarm_pin)
-                    + '","zones":"['
+                    + '","zones":['
                     + str(zone_id)
-                    + ']"}'
+                    + ']}'
                 )
 
             str_request = (
