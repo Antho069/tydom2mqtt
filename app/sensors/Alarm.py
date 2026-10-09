@@ -65,8 +65,10 @@ class Alarm:
             logger.error("Alarm sensors Error :")
             logger.error(e)
 
-        self.state_topic = alarm_state_topic.format(
-            id=self.id, state=self.current_state)
+
+        if self.current_state is not None:  # ← publier l'état seulement si connu
+        self.state_topic = alarm_state_topic.format(id=self.id)
+        
         if self.mqtt is not None:
             self.mqtt.mqtt_client.publish(
                 self.state_topic,
@@ -79,10 +81,7 @@ class Alarm:
                 qos=0,
                 retain=True)
         logger.info(
-            "Alarm created / updated : %s %s %s",
-            self.name,
-            self.id,
-            self.current_state)
+logger.info("Alarm updated : %s %s %s", self.name, self.id, self.current_state)
 
     async def update_sensors(self):
         for i, j in self.attributes.items():
